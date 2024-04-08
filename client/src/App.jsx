@@ -13,7 +13,7 @@ import CreateJobPage from "./pages/CreateJobPage.jsx"
 import CreateCompetitionPage from "./pages/CreateCompetitionPage.jsx"
 import ResetPassPage from "./pages/ResetPassPage.jsx"
 
-axios.defaults.baseURL = 'https://jobhub-bishal.vercel.app/api'
+axios.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL
 axios.defaults.withCredentials = true
  
 const App = () => {

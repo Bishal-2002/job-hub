@@ -71,7 +71,7 @@ module.exports.sendResetPassMail = async (req, res) => {
         const existingUser = await User.findOne({email})
         if (!existingUser)    res.status(409).json({'Message': 'Account with that email does not exist!'})
 
-        const resetPassLink = `http://localhost:5173/${existingUser._id}/reset-password/`
+        const resetPassLink = `https://jobhub-bishal.vercel.app/${existingUser._id}/reset-password/`
 
         const mailOptions = {
             from: 'JobHub <bishalk.tiu@gmail.com>',
