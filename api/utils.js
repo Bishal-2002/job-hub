@@ -1,3 +1,4 @@
+require('dotenv').config()
 const nodemailer = require('nodemailer')
 
 module.exports.sendMail = async (mailOptions) => {
@@ -6,7 +7,7 @@ module.exports.sendMail = async (mailOptions) => {
             service: 'gmail',
             auth: {
                 user: 'bishalk.tiu@gmail.com',
-                pass: 'cinf ddpe yqoa hozh'
+                pass: process.env.GMAIL_PASS
             }
         })
 

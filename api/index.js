@@ -1,4 +1,5 @@
 // Basic imports
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -23,10 +24,10 @@ const jobRoutes = require('./routes/jobRoutes')
 const competitionRoutes = require('./routes/competitionRoutes')
 
 // Port
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 // Database connection 
-const MONGO_URL = "mongodb+srv://bishalkundu17:bishalkundu17@cluster0.vf8n1xt.mongodb.net/JobHub?retryWrites=true&w=majority&appName=Cluster0"
+const MONGO_URL = process.env.MONGO_URL
 
 main().catch(err => console.log(err)) 
 async function main() {
