@@ -1,6 +1,8 @@
 const User = require('../models/User')
+const Otp = require('../models/Otp')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const otpGenerator = require('otp-generator')
 const { sendMail } = require('../utils')
 
 module.exports.register = async (req, res) => {
@@ -102,4 +104,43 @@ module.exports.resetPassword = async (req, res) => {
         console.log(err)
         res.status(500).json(err); 
     }   
+}
+
+module.exports.sendOTP = async (req, res) => {
+    try {
+        const {email} = req.body
+
+        const existingUser = await User.findOne({email})
+        if(existingUser)    res.status(409).json({'message': 'Account already exists!'})
+
+        let otp = otpGenerator.generate(6, { specialChars: false })
+        const existingOTPDoc = await Otp.findOne({email})
+        if (existingOTPDoc) await Otp.deleteOne({email})
+        const newOtpModel = new Otp({email, otp})
+        await newOtpModel.save()
+
+        const mailOptions = {
+            from: 'JobHub <bishalk.tiu@gmail.com>',
+            to: email,
+            subject: `Verify Your Email ID - JobHub`,
+            text: `Hi,\n\nThank you for your interest in accessing our platform, JobHub. To proceed further, you need to verify your email id with an One Time Password.\n\nHere is your One Time Password (OTP) for login: ${otp}.\n\nPlease note that the OTP is valid for only one session. If you try to refresh the page or leave the portal, you will be required to regenerate a new OTP.\n\nBest Regards,\nTeam JobHub`
+        }
+
+        await sendMail(mailOptions)
+
+        res.status(201).json({'message': 'mail sent'})
+    }
+    catch (err) { res.status(500).json({'message': 'Something went wrong!'}) }
+}
+
+module.exports.verifyOTP = async (req, res) => {
+    try {
+        const {email, otp} = req.body
+        const origOtp = await Otp.findOne({email})
+        if(!origOtp)    res.status(401).json({'message': 'Invalid OTP'})
+
+        if(otp === origOtp.otp)     res.status(201).json({'message': 'otp matched'})
+        else    res.status(401).json({'message': 'Invalid OTP'})
+    }
+    catch (err) { res.status(500).json({'message': 'Something went wrong!'}) }
 }
