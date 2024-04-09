@@ -58,7 +58,7 @@ const CreateJobPage = () => {
 
     return (
         <div className="mx-auto mt-5 w-full rounded-xl px-4 py-8 md:bg-[#dce6e8] md:w-4/12 md:shadow-primary md:mt-10">
-            <h2 className="font-extrabold text-2xl text-center text-black">Welcome to ProElevate! 👋</h2>
+            <h2 className="font-extrabold text-2xl text-center text-black">Welcome to JobHub! 👋</h2>
 
             <form className="mt-10">
                 <div className="my-1">

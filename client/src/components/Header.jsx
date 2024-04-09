@@ -42,7 +42,7 @@ const Header = () => {
     return (
         <nav className="px-20 py-4 flex gap-40 justify-around z-10">
 
-            <div className="text-2xl font-extrabold tracking-widest flex items-center">ProElevate</div>
+            <div className="text-2xl font-extrabold tracking-widest flex items-center">JobHub</div>
 
             <div className="flex items-center">
                 <ul className="list-none flex gap-10 text-lg">
