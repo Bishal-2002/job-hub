@@ -7,7 +7,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
 // Cors setup
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173, https://jobhub-bishal.vercel.app'];
 app.use(cors({
     credentials: true,
     origin: allowedOrigins
