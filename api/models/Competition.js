@@ -10,6 +10,7 @@ const competitionSchema = new Schema({
     type: String,
     prize: String,
     deadline: String,
+    applyLink: String
 }, {timestamps: true})
 
 module.exports = mongoose.model('Competition', competitionSchema)

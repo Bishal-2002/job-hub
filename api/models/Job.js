@@ -17,6 +17,7 @@ const jobSchema = new Schema({
     type: String,
     role: String,
     deadline: String,
+    applyLink: String
 }, {timestamps: true})
 
 module.exports = mongoose.model('Job', jobSchema)

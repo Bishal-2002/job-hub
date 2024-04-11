@@ -14,6 +14,7 @@ const CreateCompetitionPage = () => {
         "type": "",
         "prize": "",
         "deadline": "",
+        "applyLink": ""
     })
     
     const [redirect, setRedirect] = useState("")
@@ -111,6 +112,18 @@ const CreateCompetitionPage = () => {
                         id="prize"
                         name="prize"
                         value={formData.prize}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="my-1">
+                    <label className="px-1" htmlFor="applyLink">Apply Link</label>
+                    <input
+                        type="text"
+                        placeholder="https://google.com"
+                        id="applyLink"
+                        name="applyLink"
+                        value={formData.applyLink}
                         onChange={handleChange}
                     />
                 </div>

@@ -1,4 +1,5 @@
 import { format, formatDistance } from "date-fns"
+import { Link } from "react-router-dom"
 
 const CompetitionCard = ({data}) => {
 
@@ -48,7 +49,7 @@ const CompetitionCard = ({data}) => {
 
             <div className="flex justify-between items-center">
                 <span className="text-base font-medium">Apply by {formattedDeadline} | Posted {datePostedFormatted}</span>
-                <button className="bg-[#1196c2] text-white px-3 py-2 rounded-md transition ease-in duration-300 md:hover:bg-[rgb(36,131,163)]">Apply Now</button>
+                <Link className="bg-[#1196c2] text-white px-3 py-2 rounded-md transition ease-in duration-300 md:hover:bg-[rgb(36,131,163)]" to={data.applyLink} target="_blank">Apply Now</Link>
             </div>
         </div>
     )

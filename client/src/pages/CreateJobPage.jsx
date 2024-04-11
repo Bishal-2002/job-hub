@@ -20,7 +20,8 @@ const CreateJobPage = () => {
         "salary": undefined,
         "role": undefined,
         "mode": undefined,
-        "type": undefined
+        "type": undefined,
+        "applyLink": undefined
     })
     const [redirect, setRedirect] = useState("")
 
@@ -213,6 +214,18 @@ const CreateJobPage = () => {
                         id="role"
                         name="role"
                         value={formData.role}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="my-1">
+                    <label className="px-1" htmlFor="applyLink">Apply Link</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Apply Link"
+                        id="applyLink"
+                        name="applyLink"
+                        value={formData.applyLink}
                         onChange={handleChange}
                     />
                 </div>
